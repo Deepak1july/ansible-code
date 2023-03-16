@@ -1,0 +1,28 @@
+---
+ - name: "Replace String"
+   hosts: stapp01
+   become: yes
+   tasks:
+      - replace:
+         path: /opt/dba/blog.txt
+         regexp: 'xFusionCorp'
+         replace: "Nautilus"
+
+
+ - name: "Replace String"
+   hosts: stapp02
+   become: yes
+   tasks:
+      - replace:
+         path: /opt/dba/story.txt
+         regexp: 'Nautilus'
+         replace: "KodeKloud"
+
+ - name: "Replace String"
+   hosts: stapp03
+   become: yes
+   tasks:
+      - replace:
+         path: /opt/dba/media.txt
+         regexp: 'KodeKloud'
+         replace: "xFusionCorp Industries"
