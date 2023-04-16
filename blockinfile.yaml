@@ -1,0 +1,25 @@
+---
+- name: "Ansible Playbook"
+  hosts: stapp01,stapp02,stapp03
+  become: yes
+  tasks:
+  - name: "Install httpd"
+    package:
+     name: httpd
+     state: present
+  - name: "Ensure http up"
+    service:
+     name: httpd
+     state: started
+  - name: "blockinfile"
+    blockinfile:
+     path: /var/www/html/index.html
+     create: yes
+     block: |
+      Welcome to XfusionCorp!
+      This is Nautilus sample file, created using Ansible!
+      Please do not modify this file manually!
+     path: /var/www/html/index.html
+     group: apache
+     owner: apache
+     mode: 0744 
